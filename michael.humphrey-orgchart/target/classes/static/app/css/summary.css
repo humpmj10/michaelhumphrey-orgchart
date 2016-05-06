@@ -1,0 +1,51 @@
+@CHARSET "ISO-8859-1";
+
+table#01 {
+	border-collapse: collapse;
+	border-spacing: .5rem;
+	width: 80%;
+	padding-right: 15px;
+	font-family: "Arial", "Tahoma", sans serif;
+}
+
+td {
+	text-align: left;
+	padding-right: 15px;
+	width: 125px;
+}
+
+th {
+	text-align: left;
+	font-family: "Arial", "Tahoma", sans serif;
+	font-size: 15px;
+}
+
+tr.odd {
+	background-color: #CCFFCC;
+}
+
+h1 {
+	align: left;
+	color: gray;
+	padding-bottom: 15px;
+}
+
+/* add a record button */
+.btn-primary {
+	border-radius: 5px;
+}
+
+a.tableLink {
+	text-decoration: none;
+	font-family: "Arial", "Tahoma", sans serif;
+	font-size: 15px;
+}
+
+a:visited {
+	color: #337ab7;
+} /* visited link */
+a:hover {
+	color: black;
+} /* mouse over link */
+a:active {
+	color: #337ab7;

@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	<table class="table table-bordered">
+		<tr>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='id'; reverseSort = !reverseSort">
+					          ID</a></th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='personnelId'; reverseSort = !reverseSort">
+					Personnel ID</a></th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='firstName'; reverseSort = !reverseSort">First
+					Name</a></th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='lastName'; reverseSort = !reverseSort">Last
+					Name</a></th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='phoneNumber'; reverseSort = !reverseSort">Phone
+					Number</a></th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='email'; reverseSort = !reverseSort">Email</a>
+			</th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='startDate'; reverseSort = !reverseSort">Start
+					Date</a></th>
+			<th><a href="" class="tableLink"
+				ng-click="orderByField='login'; reverseSort = !reverseSort">Login</a>
+			</th>
+<!-- 			<th><a href="" class="tableLink" -->
+<!--                 ng-click="orderByField='manager'; reverseSort = !reverseSort">Manager</a> -->
+<!--             </th> -->
+			<th>Actions</th>
+		</tr>
+		<tr ng-repeat="person in persons | orderBy:orderByField:reverseSort"
+			ng-class-odd="'odd'">
+			<td>{{ person.id }}</td>
+			<td>{{ person.personnelId }}</td>
+			<td>{{ person.firstName | capitalize }}</td>
+			<td>{{ person.lastName | capitalize }}</td>
+			<td>{{ person.phoneNumber | nospace | nohypen | phonenumber }}</td>
+			<td>{{ person.email | lowercase }}</td>
+			<td>{{ person.startDate | date }}</td>
+			<td>{{ person.login | lowercase }}</td>
+<!-- 			<td>{{ person.manager }}</td> -->
+			<td><a href="" ng-click="editPerson(person)" class="l1"><i
+					class="glyphicon glyphicon-pencil" tooltip="Edit this record"></i></a>
+				<!-- 				Seperate the icons with spaces and |  -->
+				&nbsp;&nbsp;|&nbsp;&nbsp; <a href="" ng-click="deletePerson(person)"
+				tooltip="Delete this record" class="l1"><i
+					class="glyphicon glyphicon-trash"></i></a></td>
+		</tr>
+	</table>
+	<!--    Button that takes user to add a new page -->
+	<button class="btn-primary" ng-click="newPerson()">Add a
+		record</button>
+</div>
+

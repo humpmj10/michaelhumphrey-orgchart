@@ -1,0 +1,72 @@
+<!-- This xml file is not currently being used, it was left as a example of xml configuration -->
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.accenture.javadojo.orgchart.service" />
+	<context:component-scan base-package="com.accenture.javadojo.orgchart.dao" />
+	<context:component-scan base-package="com.accenture.javadojo.orgchart.app" />
+	<context:component-scan base-package="com.accenture.javadojo.orgchart.utilities" />
+	<context:component-scan base-package="com.accenture.javadojo.orgchart.model" />
+
+	<!-- Service implement with a real DAO implementation -->
+	<bean id="service" class="com.accenture.javadojo.orgchart.service.PersonServiceImpl">
+		<property name="personDAO" ref="personDaoJdbc">
+		</property>
+	</bean>
+
+	<!-- Service implemented with a stubDAO class, used for isolated testing -->
+	<bean id="serviceStub" class="com.accenture.javadojo.orgchart.service.PersonServiceImpl">
+		<property name="personDAO">
+			<bean class="com.accenture.javadojo.orgchart.dao.PersonDaoStub">
+				<property name="persons">
+					<list>
+					</list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="personDaoJdbc" class="com.accenture.javadojo.orgchart.dao.PersonDaoJdbc"
+		init-method="beanInit">
+		<property name="dataSource" ref="dataSource" />
+		<property name="conn">
+			<null />
+		</property>
+		<property name="stmt">
+			<null />
+		</property>
+		<property name="rs">
+			<null />
+		</property>
+	</bean>
+
+	<bean id="personDaoSpring" class="com.accenture.javadojo.orgchart.dao.PersonDaoSpring"
+		init-method="beanInit">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/javadojo" />
+		<property name="username" value="javadojo" />
+		<property name="password" value='password' />
+	</bean>
+
+
+
+</beans>

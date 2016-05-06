@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+
+.btn-primary {
+	width: 75px;
+	border-radius: 5px;
+}
+
+.label-default {
+	background-color: #838383;
+}
+
+.form-control {
+	width: 30%;
+}
+

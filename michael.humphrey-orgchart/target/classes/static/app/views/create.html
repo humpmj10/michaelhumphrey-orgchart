@@ -1,0 +1,113 @@
+<div class="container-fluid">
+	<h2>Edit/New Record</h2>
+	<form name="userForm" novalidate>
+	
+        <!-- 	     Personnel ID -->
+		<div class="form-group" ng-class="{ 'has-error' : userForm.personnelId.$invalid && !userForm.personnelId.$pristine }" >
+		   <label class="label label-default">Personnel ID (required)</label>
+		   <input type="text"
+		          name="personnelId"
+		          class="form-control"
+		          placeholder="Personnel ID"
+	              ng-model="currentPerson.personnelId"
+	              ng-minlength="1"
+	              ng-maxlength="20"
+	              required>
+            <!-- 	              Error messages for invalid input -->
+		   <p ng-show="userForm.personnelId.$invalid && !userForm.personnelId.$pristine && !userForm.personnelId.$error.maxlength" class="help-block">Personnel ID is required.</p>
+           <p ng-show="userForm.personnelId.$error.maxlength" class="help-block">Personnel ID is too long.</p>
+		</div>
+		
+		<!--       First Name-->
+		<div class="form-group" ng-class="{ 'has-error' : userForm.firstName.$invalid && !userForm.firstName.$pristine }" >
+           <label class="label label-default">First Name (required)</label>
+           <input type="text"
+                  name="firstName"
+                  class="form-control"
+                  placeholder="First Name"
+                  ng-model="currentPerson.firstName"
+                  ng-minlength="1"
+                  ng-maxlength="20"
+                  required>
+            <!--                  Error messages for invalid input -->
+           <p ng-show="userForm.firstName.$invalid && !userForm.firstName.$pristine && !userForm.firstName.$error.maxlength" class="help-block">First Name is required.</p>
+           <p ng-show="userForm.firstName.$error.maxlength" class="help-block">First Name is too long.</p>
+        </div>
+	    
+	    <!--       Last Name-->
+	    <div class="form-group" ng-class="{ 'has-error' : userForm.lastName.$invalid && !userForm.lastName.$pristine }" >
+	       <label class="label label-default">Last Name (required)</label>
+	       <input type = "text"
+	              name="lastName"
+	              class="form-control"
+	              placeholder="Last Name"
+	              ng-model="currentPerson.lastName"
+	              ng-minlength="1"
+	              ng-maxlength="20"
+	              required>
+	       <p ng-show="userForm.lastName.$invalid && !userForm.lastName.$pristine" class="help-block">Last name is required.</p>
+	       <p ng-show="userForm.lastName.$error.maxlength" class="help-block">Last name is too long.</p>
+	    </div>
+	    
+	    <!--       Phone Number-->
+	    <div class="form-group" ng-class="{ 'has-error' : userForm.phoneNumber.$invalid && !userForm.phoneNumber.$pristine }" >
+	       <label class="label label-default">Phone Number</label>
+	       <input type = "text"
+	              name="phoneNumber"
+	              class="form-control"
+	              placeholder="xxx-xxx-xxxx"
+	              ng-model="currentPerson.phoneNumber"
+	              ng-minlength="7"
+	              ng-maxlength="15">
+	        <p ng-show="userForm.phoneNumber.$error.minlength" class="help-block">Phone number is too short.</p>
+            <p ng-show="userForm.phoneNumber.$error.maxlength" class="help-block">Phone number is too long.</p>
+	    </div>
+	    
+	    <!--       Email-->
+	    <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }" >
+	       <label class="label label-default">Email</label>
+	       <input type = "email"
+	              name="email"
+	              class="form-control"
+	              placeholder="Email"
+	              ng-model="currentPerson.email"
+	              ng-minlength="1"
+	              ng-maxlength="50">
+	        <p ng-show="userForm.email.$error.minlength" class="help-block">Email is too short.</p>
+            <p ng-show="userForm.email.$error.maxlength" class="help-block">Email is too long.</p>
+	    </div>
+	    
+	    <!--       Start Date-->
+	    <div class="form-group" ng-class="{ 'has-error' : userForm.startDate.$invalid && !userForm.startDate.$pristine }" >
+	       <label class="label label-default">Start Date</label>
+	       <input type = "date"
+	              name="startDate"
+	              class="form-control"
+	              placeholder="MM-DD-YYYY"
+	              ng-model="currentPerson.startDate"
+	              ng-minlength="1"
+	              ng-maxlength="20">
+	        <p ng-show="userForm.startDate.$error.minlength" class="help-block">Start date is too short.</p>
+            <p ng-show="userForm.startDate.$error.maxlength" class="help-block">Start date is too long.</p>
+	    </div>
+	    
+	    <!--       Login-->
+	    <div class="form-group" ng-class="{ 'has-error' : userForm.login.$invalid && !userForm.login.$pristine }" >
+	       <label class="label label-default">Login</label>
+	       <input type = "text"
+	              name = "login"
+	              class="form-control"
+	              placeholder="Login"
+	              ng-model="currentPerson.login"
+	              ng-minlength="1"
+	              ng-maxlength="30">
+	        <p ng-show="userForm.login.$error.minlength" class="help-block">Login is too short.</p>
+            <p ng-show="userForm.login.$error.maxlength" class="help-block">Login date is too long.</p>
+	    </div>
+	    <span>
+		        <td><button class="btn-primary" ng-click="cancelEdit()">Cancel</button></tr>
+		        <td><button class="btn-primary" ng-disabled="userForm.$invalid" ng-click="saveEdit(currentPerson)">Submit</button></td>
+		</span>
+    </form>
+</div>	
+
